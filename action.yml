@@ -1,0 +1,18 @@
+name: 'Clean Up Organization Members'
+description: 'Removes inactive members from a GitHub organization.'
+
+branding:
+  icon: 'file-text'
+  color: 'yellow'
+
+inputs:
+  token:
+    description: 'GitHub Token'
+    required: true
+  path:
+    description: 'Path to the directory where the csv file should be saved.'
+    required: true
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
