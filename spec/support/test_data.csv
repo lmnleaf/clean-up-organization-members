@@ -1,0 +1,6 @@
+login,name,tfa_enabled,tfa_required_by,is_public,role,last_active,saml_name_id,organization_roles_count
+coolcool,Bill Bills,TRUE,,FALSE,Owner,2024-10-23 08:25:23 -0600,,0
+wootwoot,Tim Tims,TRUE,,FALSE,Owner,2024-05-24 07:41:16 -0600,,0
+yipyip,Jen Jens,FALSE,,FALSE,Member,No activity,,0
+dancedance,Betty Bettys,TRUE,,FALSE,Owner,2024-9-24 11:54:00 -0600,,0
+partytime,Eric Erics,TRUE,,FALSE,Owner,2024-10-24 11:54:00 -0600,,0
