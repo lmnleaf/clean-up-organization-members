@@ -1,6 +1,6 @@
 import * as fs from 'fs/promises';
 
-async function prepareInactiveList(listPath, totalDays) {
+async function prepareInactiveList(listPath, owner, totalDays) {
   let dateToday = new Date();
   let startDate = new Date(dateToday);
   startDate.setUTCDate(dateToday.getUTCDate() - totalDays);
@@ -31,6 +31,7 @@ async function prepareInactiveList(listPath, totalDays) {
         inactiveMemberInfo['login'] = memberInfo['login'];
         inactiveMemberInfo['lastActive'] = memberInfo['lastActive'];
         inactiveMemberInfo['role'] = memberInfo['role'];
+        inactiveMemberInfo['organization'] = owner;
 
         memberData.push(inactiveMemberInfo);
       }
