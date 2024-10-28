@@ -32,6 +32,8 @@ async function prepareInactiveList(listPath, owner, totalDays) {
         inactiveMemberInfo['lastActive'] = memberInfo['lastActive'];
         inactiveMemberInfo['role'] = memberInfo['role'];
         inactiveMemberInfo['organization'] = owner;
+        inactiveMemberInfo['removed'] = false;
+        inactiveMemberInfo['notFound'] = false;
 
         memberData.push(inactiveMemberInfo);
       }

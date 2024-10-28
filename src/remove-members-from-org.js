@@ -13,8 +13,10 @@ async function removeMembersFromOrg(listPath, owner, totalDays, octokit) {
 
         member['removed'] = true;
       } catch (error) {
+        member['removed'] = false;
+
         if (error.message.includes('member not found')) {
-          member['removed'] = false;
+          member['notFound'] = true;
           return;
         } else {
           throw error;

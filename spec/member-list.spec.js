@@ -25,10 +25,14 @@ describe('Member List', function() {
     expect(inactiveMembers[0]['lastActive']).toBe('2024-05-24 07:41:16 -0600');
     expect(inactiveMembers[0]['role']).toBe('Owner');
     expect(inactiveMembers[0]['organization']).toBe('cool-org');
+    expect(inactiveMembers[0]['removed']).toBe(false);
+    expect(inactiveMembers[0]['notFound']).toBe(false);
     expect(inactiveMembers[1]['login']).toBe('yipyip');
     expect(inactiveMembers[1]['lastActive']).toBe('No activity');
     expect(inactiveMembers[1]['role']).toBe('Member');
     expect(inactiveMembers[1]['organization']).toBe('cool-org');
+    expect(inactiveMembers[0]['removed']).toBe(false);
+    expect(inactiveMembers[0]['notFound']).toBe(false);
   });
 
   it ('returns a list of inactive members based on totalDays', async function() {

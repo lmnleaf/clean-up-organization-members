@@ -9,18 +9,21 @@ describe("Removed Members Report", function() {
       lastActive: '2024-05-24 07:41:16 -0600',
       role: 'Owner',
       removed: true,
+      notFound: false,
       organization: 'cool-org'
     },
     { login: 'inactivecool',
       lastActive: 'No activity',
       role: 'Member',
       removed: false,
+      notFound: true,
       organization: 'cool-org' },
     {
       login: 'inactivedance',
       lastActive: '2024-9-24 11:54:00 -0600',
       role: 'Member',
       removed: true,
+      notFound: false,
       organization: 'cool-org'
     }
   ]
@@ -43,10 +46,10 @@ describe("Removed Members Report", function() {
     const lines = fileContent.split('\n');
 
     expect(lines.length).toBe(4);
-    expect(lines[0]).toContain('login,last_active,role,removed,organization');
-    expect(lines[1]).toContain('inactivewoot,2024-05-24 07:41:16 -0600,Owner,true,cool-org');
-    expect(lines[2]).toContain('inactivecool,No activity,Member,false,cool-org');
-    expect(lines[3]).toContain('inactivedance,2024-9-24 11:54:00 -0600,Member,true,cool-org');
+    expect(lines[0]).toContain('login,last_active,role,removed,not_found,organization');
+    expect(lines[1]).toContain('inactivewoot,2024-05-24 07:41:16 -0600,Owner,true,false,cool-org');
+    expect(lines[2]).toContain('inactivecool,No activity,Member,false,true,cool-org');
+    expect(lines[3]).toContain('inactivedance,2024-9-24 11:54:00 -0600,Member,true,false,cool-org');
   });
 
   it ('returns a report summary when the report covers a list of repos', async function() {

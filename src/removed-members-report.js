@@ -6,6 +6,7 @@ function createReport(removedMembers, reportPath) {
     member.lastActive,
     member.role,
     member.removed,
+    member.notFound,
     member.organization
   ]);
 
@@ -14,6 +15,7 @@ function createReport(removedMembers, reportPath) {
     'last_active',
     'role',
     'removed',
+    'not_found',
     'organization'
   ]);
 
@@ -35,7 +37,7 @@ function writeFile(path, data, callback) {
 function reportSummary(removedMembers) {
   let reportSummary = 'Total members: ' + removedMembers.length.toString() + '.\n' +
     'Members removed: ' + removedMembers.filter((member) => member.removed).length.toString() + '.\n' +
-    'Members not found: ' + removedMembers.filter((member) => !member.removed).length.toString() + '.'
+    'Members not found: ' + removedMembers.filter((member) => member.notFound).length.toString() + '.'
 
   return reportSummary;
 }
