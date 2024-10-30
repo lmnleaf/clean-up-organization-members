@@ -56,7 +56,7 @@ describe("Removed Members Report", function() {
     const reportSummary = removedMembersReport.createReport(removedMembers, path);
 
     expect(reportSummary).toEqual(
-      'Total members: 3.\n' +
+      'Total inactive members: 3.\n' +
       'Members removed: 2.\n' +
       'Members not found: 1.'
     );
@@ -72,6 +72,6 @@ describe("Removed Members Report", function() {
       caughtError = error;
     }
 
-    expect(caughtError).toEqual(new Error('uh oh'));
+    expect(caughtError.message).toEqual('uh oh');
   });
 });

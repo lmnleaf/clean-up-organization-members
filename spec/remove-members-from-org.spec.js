@@ -1,4 +1,4 @@
-import { default as removeMembersFromOrg } from '../src/remove-members-from-org.js';
+import { removeMembersFromOrg } from '../src/remove-members-from-org.js';
 import { memberList } from '../src/member-list.js';
 import Moctokit from './support/moctokit.js';
 
@@ -31,7 +31,7 @@ describe('Member List', function() {
   let owner = 'test-org';
   let totalDays = 90;
 
-  beforeEach(() => {
+  beforeEach(function() {
     octokit = new Moctokit();
 
     prepareInactiveListOriginal = memberList.prepareInactiveList;
@@ -43,7 +43,9 @@ describe('Member List', function() {
   });
 
   it ('returns a list of members removed from the org', async function() {
-    let removedMembers = await removeMembersFromOrg(path, owner, totalDays, octokit);
+    let removedMembers = await removeMembersFromOrg.removeMembers(path, owner, totalDays, octokit);
+
+    expect(memberList.prepareInactiveList).toHaveBeenCalledWith(path, owner, totalDays);
 
     expect(removedMembers.length).toBe(3);
     expect(removedMembers[0]['login']).toBe('inactivewoot');
@@ -66,11 +68,15 @@ describe('Member List', function() {
   it ('continues to next inactive member if member not found', async function() {
     spyOn(octokit.rest.orgs, 'removeMembershipForUser').and.callFake((options) => {
       if (options.username === 'inactivecool') {
-        throw new Error('member not found');
+        let notFoundError = new Error('Cannot find inactivecool');
+        notFoundError.status = 404;
+        throw notFoundError;
+      } else {
+        return Promise.resolve({ status: 204 });
       }
     });
 
-    let removedMembers = await removeMembersFromOrg(path, owner, totalDays, octokit);
+    let removedMembers = await removeMembersFromOrg.removeMembers(path, owner, totalDays, octokit);
 
     expect(removedMembers.length).toBe(3);
     expect(removedMembers[0]['login']).toBe('inactivewoot');
@@ -90,7 +96,7 @@ describe('Member List', function() {
     let caughtError;
  
     try {
-      await removeMembersFromOrg(path, owner, totalDays, octokit);
+      await removeMembersFromOrg.removeMembers(path, owner, totalDays, octokit);
     } catch (error) {
       caughtError = error;
     }
