@@ -1,4 +1,4 @@
-import { removedMembersReport } from '../src/removed-members-report.js';
+import { removedMembersReport } from '../../src/removed-members-report.js';
 
 describe("Removed Members Report", function() {
   let owner = 'cool-org';

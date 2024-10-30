@@ -1,6 +1,6 @@
-import { removeMembersFromOrg } from '../src/remove-members-from-org.js';
-import { memberList } from '../src/member-list.js';
-import Moctokit from './support/moctokit.js';
+import { removeMembersFromOrg } from '../../src/remove-members-from-org.js';
+import { memberList } from '../../src/member-list.js';
+import Moctokit from '../support/moctokit.js';
 
 describe('Member List', function() {
   let octokit;

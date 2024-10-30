@@ -1,4 +1,4 @@
-import { memberList } from '../src/member-list.js';
+import { memberList } from '../../src/member-list.js';
 
 describe('Member List', function() {
   let date = new Date(2024, 9, 27);
