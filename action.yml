@@ -9,8 +9,14 @@ inputs:
   token:
     description: 'GitHub Token'
     required: true
-  path:
-    description: 'Path to the directory where the csv file should be saved.'
+  memberListPath:
+    description: 'Path to the csv file containing the list of members in the organization.'
+    required: true
+  reportPath:
+    description: 'Path to the directory where the csv file containing the inactive members should be saved.'
+    required: true
+  totalDaysInactive:
+    description: 'Number of days a member must be inactive to be considered inactive.'
     required: true
 
 runs:
