@@ -7,15 +7,15 @@ branding:
 
 inputs:
   token:
-    description: 'GitHub Token'
+    description: 'Personal Access Token (PAT) with the necessary permissions to remove members from the organization.'
     required: true
-  memberListPath:
+  member_list_path:
     description: 'Path to the csv file containing the list of members in the organization.'
     required: true
-  reportPath:
-    description: 'Path to the directory where the csv file containing the inactive members should be saved.'
+  report_path:
+    description: 'Path to the directory where the csv file containing the summary of inactive members should be saved.'
     required: true
-  totalDaysInactive:
+  total_days_inactive:
     description: 'Number of days a member must be inactive to be considered inactive.'
     required: true
 
