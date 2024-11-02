@@ -2,12 +2,12 @@ name: 'Clean Up Organization Members'
 description: 'Removes inactive members from a GitHub organization.'
 
 branding:
-  icon: 'file-text'
-  color: 'yellow'
+  icon: 'folder'
+  color: 'purple'
 
 inputs:
   token:
-    description: 'Personal Access Token (PAT) with the necessary permissions to remove members from the organization.'
+    description: 'Personal Access Token (PAT) or GitHub App token with the necessary permissions to remove members from the organization.'
     required: true
   member_list_path:
     description: 'Path to the csv file containing the list of members in the organization.'
